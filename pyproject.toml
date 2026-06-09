@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ragnexus"
+version = "0.1.0"
+description = "Embed-anything knowledge engine with a gitnexus-style DX: index a source once, query it from any agent via MCP or the CLI."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Jean Brito", email = "jean.brito@rocket.chat" }]
+keywords = ["rag", "embeddings", "mcp", "pdf", "retrieval", "sqlite-vec"]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+]
+dependencies = [
+    "typer>=0.15",
+    "fastmcp>=2.0",
+    "sqlite-vec>=0.1.6",
+    "sentence-transformers>=3.0",
+    "docling>=2.0",
+    "pymupdf>=1.24",
+    "tomli-w>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+ragnexus = "ragnexus.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/jeanbritodev/ragnexus"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ragnexus"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: tests that are slow (e.g. real-PDF ingest; first run downloads Docling models)",
+]
