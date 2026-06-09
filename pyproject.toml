@@ -33,7 +33,7 @@ dev = ["pytest>=8.0"]
 ragnexus = "ragnexus.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/jeanbritodev/ragnexus"
+Homepage = "https://github.com/jeanfbrito/ragnexus"
 
 [tool.hatch.build.targets.wheel]
 packages = ["ragnexus"]
